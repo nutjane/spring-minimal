@@ -1,5 +1,10 @@
 # spring-minimal
 
+- spring boot
+- swagger-ui
+- connect to mysql
+- docker of mysql 
+
 ## how to run
 
 `./parepare.sh` to start database docker
@@ -7,6 +12,6 @@
 ## view
 
 ```
-ocalhost:8080/swagger-ui.html       for swagger ui
+localhost:8080/swagger-ui.html       for swagger ui
 
 ```
