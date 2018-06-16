@@ -4,6 +4,7 @@
 - swagger-ui
 - connect to mysql
 - docker of mysql 
+- API security with JWT
 
 ## how to run
 

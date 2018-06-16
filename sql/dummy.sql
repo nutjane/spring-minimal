@@ -8,3 +8,9 @@ CREATE TABLE Persons (
     Address varchar(255),
     City varchar(255)
 );
+
+CREATE TABLE task (
+	id INT NOT NULL AUTO_INCREMENT,
+	description varchar(100),
+	PRIMARY KEY (id)
+);
