@@ -39,7 +39,7 @@ public class UserController {
 
     @GetMapping(path = "/get")
     public @ResponseBody User getByName(@RequestParam String name) {
-        return userRepository.findByName(name);
+        return userRepository.findByName(name).orElse(null);
     }
 
 

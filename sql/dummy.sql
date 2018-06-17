@@ -1,16 +1,18 @@
 create user 'springuser'@'%' identified by 'ThePassword'; -- Creates the user
 grant all on TestDB.* to 'springuser'@'%'; -- Gives all the privileges to the new user on the newly created database
 
-CREATE TABLE Persons (
-    PersonID int,
-    LastName varchar(255),
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255)
-);
-
-CREATE TABLE task (
-	id INT NOT NULL AUTO_INCREMENT,
-	description varchar(100),
-	PRIMARY KEY (id)
-);
+# CREATE TABLE `user` (
+#   `id` int(11) NOT NULL AUTO_INCREMENT,
+#   `email` varchar(255) NOT NULL,
+#   `name` varchar(255) NOT NULL,
+#   `password` varchar(255) NOT NULL,
+#   PRIMARY KEY (`id`)
+# );
+#
+# CREATE TABLE `task` (
+#   `id` int(11) NOT NULL AUTO_INCREMENT,
+#   `description` varchar(255) DEFAULT NULL,
+#   `user_id` int(11) NOT NULL ,
+#   PRIMARY KEY (`id`),
+#   CONSTRAINT FK_TaskUser FOREIGN KEY (id) REFERENCES user(id)
+# );

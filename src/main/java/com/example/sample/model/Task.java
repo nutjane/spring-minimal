@@ -1,26 +1,35 @@
 package com.example.sample.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.*;
 
+@Table(name = "task")
 @Entity
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String description;
+
+    @JsonIgnore
+    @ManyToOne
+    private User user;
 
     protected Task() { }
 
-    public Task(String description) {
+    public Task(final User user, final String description) {
+        this.user = user;
         this.description = description;
     }
 
     public long getId() {
         return id;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     public String getDescription() {
