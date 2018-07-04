@@ -4,6 +4,8 @@ package com.example.sample.controller;
 import com.example.sample.model.User;
 import com.example.sample.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +42,11 @@ public class UserController {
     @GetMapping(path = "/get")
     public @ResponseBody User getByName(@RequestParam String name) {
         return userRepository.findByName(name).orElse(null);
+    }
+
+    @GetMapping(path = "/current")
+    public @ResponseBody String getCurrent(Authentication authentication) {
+        return authentication.getName();
     }
 
 

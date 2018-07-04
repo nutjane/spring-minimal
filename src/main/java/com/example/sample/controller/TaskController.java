@@ -6,6 +6,7 @@ import com.example.sample.repository.TaskRepository;
 import com.example.sample.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
@@ -41,10 +42,11 @@ public class TaskController {
     }
 
     @PostMapping
-    public ResponseEntity<?> add(@PathVariable String userId, @RequestBody Task input) {
-        this.validateUser(userId);
+    public ResponseEntity<?> add(Authentication authentication, @RequestBody Task input) {
+        String username = authentication.getName();
+        this.validateUser(username);
         return this.userRepository
-                .findByName(userId)
+                .findByName(username)
                 .map(account -> {
                     Task result = taskRepository.save(new Task(account, input.getDescription()));
                     URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
